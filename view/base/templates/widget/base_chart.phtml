@@ -1,0 +1,9 @@
+<?php
+    /* @var \BroCode\Chartee\Block\Widget\BaseChart $block */
+?>
+
+<canvas id="chart-<?= $block->getCacheKey() ?>"
+        data-mage-init='{"graph": <?= $block->getConfiguration() ?>}'
+        width="undefined"
+        height="undefined">
+</canvas>

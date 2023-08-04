@@ -1,0 +1,20 @@
+{
+  "name": "brocode/module-chartee",
+  "version": "0.0.1",
+  "description": "Module to generate Graphs and Charts with chart.js",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "license": [
+    "MIT"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "BroCode\\Chartee\\": ""
+    }
+  }
+}

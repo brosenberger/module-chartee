@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceContainer name="content">
+
+            <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.boxplot" before="-">
+                <action method="setViewModel">
+                    <argument name="viewModel" xsi:type="object">
+                        BroCode\Chartee\Block\ViewModel\DemoBoxplotChartConfiguration
+                    </argument>
+                </action>
+            </block>
+            <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.gauge" after="chartee.boxplot">
+                <action method="setViewModel">
+                    <argument name="viewModel" xsi:type="object">
+                        BroCode\Chartee\Block\ViewModel\DemoGaugeChartConfiguration
+                    </argument>
+                </action>
+            </block>
+            <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.bar" after="chartee.gauge">
+                <action method="setViewModel">
+                    <argument name="viewModel" xsi:type="object">
+                        \BroCode\Chartee\Block\ViewModel\DemoBarChartConfiguration
+                    </argument>
+                </action>
+            </block>
+            <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.doughnut" after="chartee.gauge">
+                <action method="setViewModel">
+                    <argument name="viewModel" xsi:type="object">
+                        \BroCode\Chartee\Block\ViewModel\DemoDoughnutChartConfiguration
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+
+</page>

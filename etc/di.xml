@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!--<preference for="BroCode\Chartee\Api\ChartDataViewModelInterface" type="BroCode\Chartee\Block\ViewModel\ChartDataViewModel"/>-->
+    <preference for="BroCode\Chartee\Api\Data\ChartDataConfigurationInterface" type="BroCode\Chartee\Model\Data\ChartDataConfiguration"/>
+
+    <virtualType name="BroCode\Chartee\Block\ViewModel\DemoBoxplotChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
+        <arguments>
+            <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoBoxplotDataBuilder</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BroCode\Chartee\Block\ViewModel\DemoGaugeChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
+        <arguments>
+            <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoGaugeChartDataBuilder</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BroCode\Chartee\Block\ViewModel\DemoBarChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
+        <arguments>
+            <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoBarChartDataBuilder</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BroCode\Chartee\Block\ViewModel\DemoDoughnutChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
+        <arguments>
+            <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoDoughnutChartDataBuilder</argument>
+        </arguments>
+    </virtualType>
+</config>
