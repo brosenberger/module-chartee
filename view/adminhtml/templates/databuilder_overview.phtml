@@ -1,0 +1,16 @@
+<?php
+    /** @var \BroCode\Chartee\Block\Adminhtml\Listing\DataBuilderOverview $block */
+?>
+
+<table class="admin__table-primary dashboard-data">
+    <thead>
+        <tr>
+            <th class="data-grid-th no-link"><?= __('Registered Data Builders') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($block->getChartDataBuilders() as $registeredName => $builder): ?>
+        <tr><td><?= $registeredName ?></td></tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

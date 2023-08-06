@@ -1,0 +1,12 @@
+<?php
+    /** @var \BroCode\Chartee\Block\Adminhtml\Demo\DemoOverview $block */
+?>
+
+<div class="chartee-demo" style="display: grid; grid-template-columns: repeat(2, 1fr);">
+    <?php foreach ($block->getChildNames() as $childName): ?>
+        <div class="chartee-demo-card" style="padding: 10px;">
+            <div class="chartee-demo-card-title"><h3><?= $childName ?></h3></div>
+            <div class="chartee-demo-card-content" style="max-height: 500px;"><?php echo $block->getChildHtml($childName) ?></div>
+        </div>
+    <?php endforeach; ?>
+</div>

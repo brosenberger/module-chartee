@@ -30,4 +30,9 @@ class ChartDataService
         throw new CharteeException('Chart builder not found');
     }
 
+    public function getChartDataBuilder()
+    {
+        return $this->chartDataBuilders;
+    }
+
 }

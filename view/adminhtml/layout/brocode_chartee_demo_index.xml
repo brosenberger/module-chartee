@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceContainer name="content">
+            <block class="BroCode\Chartee\Block\Adminhtml\Demo\DemoOverview" name="chartee.demo">
+                <container name="chartee.boxplot.demo" htmlTag="div" htmlClass="chartee-demo-container"    before="-">
+                <container name="chartee.boxplot.demo.text-container" htmlTag="div">
+                    <block class="Magento\Framework\View\Element\Text" name="chartee.boxplot.demo.text">
+                        <arguments>
+                            <argument name="text" xsi:type="string" translate="true"><![CDATA[
+What is a Boxplot chart? See <a href="https://en.wikipedia.org/wiki/Box_plot" target="_blank">Wikipedia</a> for more information.</br>
+Boxplot Sample Implementation from sample: <a href="https://www.youtube.com/watch?v=2zEbeX0bPS8" target="_blank">Youtube</a>
+]]></argument>
+                        </arguments>
+                    </block>
+                </container>
+                    <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.boxplot.demo.chart">
+                            <action method="setViewModel">
+                                <argument name="viewModel" xsi:type="object">
+                                    BroCode\Chartee\Block\ViewModel\DemoBoxplotChartConfiguration
+                                </argument>
+                            </action>
+                        </block>
+                </container>
+
+                <container name="chartee.bar.demo" htmlTag="div" htmlClass="chartee-demo-container"   >
+                <container name="chartee.bar.demo.text-container" htmlTag="div">
+                    <block class="Magento\Framework\View\Element\Text" name="chartee.bar.demo.text">
+                        <arguments>
+                            <argument name="text" xsi:type="string" translate="true"><![CDATA[
+Bar Chart Sample Implementation from sample: <a href="https://www.chartjs3.com/docs/chart/getting-started/" target="_blank">ChartJs3.com</a>
+]]></argument>
+                        </arguments>
+                    </block>
+                </container>
+                <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.bar.demo.chart">
+                    <action method="setViewModel">
+                        <argument name="viewModel" xsi:type="object">
+                            \BroCode\Chartee\Block\ViewModel\DemoBarChartConfiguration
+                        </argument>
+                    </action>
+                </block>
+                </container>
+
+
+                <container name="chartee.doughnut.demo" htmlTag="div" htmlClass="chartee-demo-container"   >
+                <container name="chartee.doughnut.demo.text-container" htmlTag="div">
+                    <block class="Magento\Framework\View\Element\Text" name="chartee.doughnut.demo.text">
+                        <arguments>
+                            <argument name="text" xsi:type="string" translate="true"><![CDATA[
+Doughnut Chart Sample Implementation from sample: <a href="https://www.youtube.com/watch?v=YcRj52VovYQ" target="_blank">Youtube</a>
+]]></argument>
+                        </arguments>
+                    </block>
+                </container>
+                <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.doughnut.demo.chart">
+                    <action method="setViewModel">
+                        <argument name="viewModel" xsi:type="object">
+                            \BroCode\Chartee\Block\ViewModel\DemoDoughnutChartConfiguration
+                        </argument>
+                    </action>
+                </block>
+                </container>
+
+                <container name="chartee.gauge.demo" htmlTag="div" htmlClass="chartee-demo-container"   >
+                    <container name="chartee.gauge.demo.text-container" htmlTag="div">
+                        <block class="Magento\Framework\View\Element\Text" name="chartee.gauge.demo.text">
+                            <arguments>
+                                <argument name="text" xsi:type="string" translate="true"><![CDATA[
+Gauge Chart Sample Implementation from sample: <a href="https://www.youtube.com/watch?v=VF6jd2Fv4bs&list=RDCMUCojXvfr41NqDxaPb9amu8-A&index=1" target="_blank">Youtube</a>
+]]></argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.gauge.demo.chart">
+                        <action method="setViewModel">
+                            <argument name="viewModel" xsi:type="object">
+                                BroCode\Chartee\Block\ViewModel\DemoGaugeChartConfiguration
+                            </argument>
+                        </action>
+                    </block>
+                </container>
+            </block>
+        </referenceContainer>
+    </body>
+
+</page>

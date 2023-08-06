@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="BroCode_Chartee::chartee" title="BroCode Chartee" module="BroCode_Chartee" sortOrder="500" resource="BroCode_Chartee::chartee" parent="Magento_Backend::content" />
+
+        <add id="BroCode_Chartee::listing" title="Listing" module="BroCode_Chartee" sortOrder="10" action="brocode_chartee/listing" resource="BroCode_Chartee::chartee" parent="BroCode_Chartee::chartee" />
+        <add id="BroCode_Chartee::demo" title="Demo Charts" module="BroCode_Chartee" sortOrder="30" action="brocode_chartee/demo" resource="BroCode_Chartee::chartee" parent="BroCode_Chartee::chartee" />
+    </menu>
+</config>
