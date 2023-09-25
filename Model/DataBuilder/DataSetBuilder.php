@@ -42,6 +42,24 @@ class DataSetBuilder extends DataObject
         return $this;
     }
 
+    public function setBackgroundColors(...$colors)
+    {
+        $this->setData('backgroundColor', $colors);
+        return $this;
+    }
+
+    public function setBorderColors(...$colors)
+    {
+        $this->setData('borderColor', $colors);
+        return $this;
+    }
+
+    public function setBorderWidth($width)
+    {
+        $this->setData('borderWidth', $width);
+        return $this;
+    }
+
     public function build()
     {
         return $this->builder->addDataSet($this->toArray());

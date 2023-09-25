@@ -25,4 +25,9 @@
             <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoDoughnutChartDataBuilder</argument>
         </arguments>
     </virtualType>
+    <virtualType name="BroCode\Chartee\Block\ViewModel\DemoPolarChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
+        <arguments>
+            <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoPolarChartDataBuilder</argument>
+        </arguments>
+    </virtualType>
 </config>

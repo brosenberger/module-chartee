@@ -82,6 +82,25 @@ Gauge Chart Sample Implementation from sample: <a href="https://www.youtube.com/
                         </action>
                     </block>
                 </container>
+
+                <container name="chartee.polararea.demo" htmlTag="div" htmlClass="chartee-demo-container"   >
+                    <container name="chartee.polararea.demo.text-container" htmlTag="div">
+                        <block class="Magento\Framework\View\Element\Text" name="chartee.polararea.demo.text">
+                            <arguments>
+                                <argument name="text" xsi:type="string" translate="true"><![CDATA[
+Polar Area Chart Sample Implementation from sample: <a href="https://codepen.io/FranciscusAgnew/pen/LRGPYX" target="_blank">CodePen</a>
+]]></argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.polararea.demo.chart">
+                        <action method="setViewModel">
+                            <argument name="viewModel" xsi:type="object">
+                                BroCode\Chartee\Block\ViewModel\DemoPolarChartConfiguration
+                            </argument>
+                        </action>
+                    </block>
+                </container>
             </block>
         </referenceContainer>
     </body>
