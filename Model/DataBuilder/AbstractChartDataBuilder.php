@@ -4,8 +4,9 @@ namespace BroCode\Chartee\Model\DataBuilder;
 
 use BroCode\Chartee\Api\ChartDataBuilderInterface;
 use BroCode\Chartee\Api\Data\ChartDataConfigurationInterfaceFactory;
+use Magento\Framework\DataObject;
 
-abstract class AbstractChartDataBuilder implements ChartDataBuilderInterface
+abstract class AbstractChartDataBuilder extends DataObject implements ChartDataBuilderInterface
 {
     protected $dataLabels = [];
 
@@ -46,7 +47,8 @@ abstract class AbstractChartDataBuilder implements ChartDataBuilderInterface
     {
         $data =  $this->chartDataConfigurationFactory->create(
             [
-                'configuration' => $this->mergeConfigurations()
+                'configuration' => $this->mergeConfigurations(),
+                '_internals' => $this->getData()
             ]
         );
         $this->resetData();
@@ -67,6 +69,7 @@ abstract class AbstractChartDataBuilder implements ChartDataBuilderInterface
         $this->options = [];
         $this->plugins = [];
         $this->type = '';
+        $this->unsetData();
     }
 
     public function addPlugin($plugin)
