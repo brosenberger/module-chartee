@@ -10,4 +10,9 @@ interface ChartDataConfigurationInterface extends ArgumentInterface
      * @return array
      */
     public function getConfiguration();
+
+    /**
+     * @return array
+     */
+    public function getData();
 }

@@ -61,10 +61,24 @@ class BaseChart extends Template implements BlockInterface
 
         if ($this->getData('chartDataBuilder')) {
             return $this->serializer->serialize(
-                $this->chartDataService->getChartData($this->getData('chartDataBuilder'))->getConfiguration()
+                $this->getChartData()->getConfiguration()
             );
         }
 
         throw new CharteeException('No chart data configured for this chart');
+    }
+
+    /**
+     * @return \BroCode\Chartee\Api\Data\ChartDataConfigurationInterface|null
+     */
+    public function getChartData()
+    {
+        if ($this->getData('chartDataBuilder')) {
+            if (!$this->getData('chartData')) {
+                $this->setData('chartData', $this->chartDataService->getChartData($this->getData('chartDataBuilder')));
+            }
+        }
+
+        return $this->getData('chartData');
     }
 }

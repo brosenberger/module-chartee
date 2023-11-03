@@ -48,7 +48,7 @@ abstract class AbstractChartDataBuilder extends DataObject implements ChartDataB
         $data =  $this->chartDataConfigurationFactory->create(
             [
                 'configuration' => $this->mergeConfigurations(),
-                '_internals' => $this->getData()
+                'data' => $this->getData()
             ]
         );
         $this->resetData();
