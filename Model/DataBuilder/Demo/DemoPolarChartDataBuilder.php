@@ -2,18 +2,10 @@
 
 namespace BroCode\Chartee\Model\DataBuilder\Demo;
 
-use BroCode\Chartee\Model\DataBuilder\BarChartDataBuilder;
+use BroCode\Chartee\Model\DataBuilder\PolarChartDataBuilder;
 
-class DemoPolarChartDataBuilder extends BarChartDataBuilder
+class DemoPolarChartDataBuilder extends PolarChartDataBuilder
 {
-
-    protected function construct()
-    {
-        parent::construct();
-
-        $this->setType('polarArea');
-    }
-
 
     protected function mergeConfigurations()
     {
@@ -22,13 +14,6 @@ class DemoPolarChartDataBuilder extends BarChartDataBuilder
             "data" => [
                 "labels"=> $this->getDataLabels(),
                 "datasets"=> $this->getDataSets()
-            ],
-            "options" => [
-                "scales" => [
-                    "y" => [
-                        "beginAtZero" => true
-                    ]
-                ]
             ]
         ];
     }
