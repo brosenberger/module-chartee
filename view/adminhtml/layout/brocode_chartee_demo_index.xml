@@ -101,6 +101,25 @@ Polar Area Chart Sample Implementation from sample: <a href="https://codepen.io/
                         </action>
                     </block>
                 </container>
+
+                <container name="chartee.stacked.demo" htmlTag="div" htmlClass="chartee-demo-container"   >
+                    <container name="chartee.stacked.demo.text-container" htmlTag="div">
+                        <block class="Magento\Framework\View\Element\Text" name="chartee.stacked.demo.text">
+                            <arguments>
+                                <argument name="text" xsi:type="string" translate="true"><![CDATA[
+Stacked BarCharts with the help of the <a href="https://github.com/y-takey/chartjs-plugin-stacked100/" target="_blank">https://github.com/y-takey/chartjs-plugin-stacked100/</a> plugin.
+]]></argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.stacked.demo.chart">
+                        <action method="setViewModel">
+                            <argument name="viewModel" xsi:type="object">
+                                BroCode\Chartee\Block\ViewModel\DemoStackedChartConfiguration
+                            </argument>
+                        </action>
+                    </block>
+                </container>
             </block>
         </referenceContainer>
     </body>

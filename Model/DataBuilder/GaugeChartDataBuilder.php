@@ -29,7 +29,23 @@ class GaugeChartDataBuilder extends AbstractChartDataBuilder
         parent::construct();
         $this->setType('doughnut')
             ->setSectors($this->firstSector, $this->thirdSector)
-            ->addPlugin("gaugeNeedle");
+            ->addPlugin("gaugeNeedle")
+            ->addOption("layout", [
+                "padding" => [
+                    "top" => 0,
+                    "bottom" => 20,
+                    "left" => 10,
+                    "right" => 10
+                ]
+            ])->addOption("plugins", [
+                "legend" => [
+                    "display" => false
+                ],
+                "tooltip" => [
+                    "yAlign" => "bottom",
+                    "displayColors" => false
+                ]
+            ]);
     }
 
     public function setSectors($firstSector = 75, $thirdSector = 125)
@@ -112,25 +128,7 @@ class GaugeChartDataBuilder extends AbstractChartDataBuilder
                 "labels"=> $this->getDataLabels(),
                 "datasets"=> $this->getDataSets()
             ],
-            "options" => [
-                "layout" => [
-                    "padding" => [
-                        "top" => 0,
-                        "bottom" => 20,
-                        "left" => 10,
-                        "right" => 10
-                    ]
-                ],
-                "plugins" => [
-                    "legend" => [
-                        "display" => false
-                    ],
-                    "tooltip" => [
-                        "yAlign" => "bottom",
-                        "displayColors" => false
-                    ]
-                ]
-            ],
+            "options" => $this->getOptions(),
             "plugins" => $this->getPlugins()
         ];
     }

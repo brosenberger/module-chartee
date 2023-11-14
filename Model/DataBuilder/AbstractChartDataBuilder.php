@@ -58,7 +58,24 @@ abstract class AbstractChartDataBuilder extends DataObject implements ChartDataB
     /**
      * @return array
      */
-    abstract protected function mergeConfigurations();
+    protected function mergeConfigurations()
+    {
+        $configuration = [
+            "type" => $this->getType(),
+            "data" => [
+                "labels"=> $this->getDataLabels(),
+                "datasets"=> $this->getDataSets()
+            ]
+        ];
+        if (!empty($this->getOptions())) {
+            $configuration['options'] = $this->getOptions();
+        }
+        if (!empty($this->getPlugins())) {
+            $configuration['plugins'] = $this->getPlugins();
+        }
+
+        return $configuration;
+    }
 
     /**
      * @return void
@@ -78,9 +95,32 @@ abstract class AbstractChartDataBuilder extends DataObject implements ChartDataB
         return $this;
     }
 
-    protected function getPlugins()
+    public function getPlugins()
     {
         return $this->plugins;
+    }
+
+    public function addOption($option, $value)
+    {
+        if (isset($this->options[$option])) {
+            $value = array_merge_recursive($this->options[$option], $value);
+        }
+
+        $this->options[$option] = $value;
+        return $this;
+    }
+
+    public function removeOption($option)
+    {
+        if (isset($this->options[$option])) {
+            unset($this->options[$option]);
+        }
+        return $this;
+    }
+
+    public function getOptions()
+    {
+        return $this->options;
     }
 
     public function createDataSet($data = [], $addDefaults = true) {

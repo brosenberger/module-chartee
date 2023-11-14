@@ -3,10 +3,13 @@
 define([
     "jquery",
     'graph-chartjs',
-    'graph-chartjs-boxplot'
+    'graph-chartjs-boxplot',
+    'graph-chartjs-stacked100'
 ], function(
     $,
-    Chart4
+    Chart4,
+    ChartBoxplot,
+    ChartStacked100
 ) {
     "use strict";
 
@@ -43,6 +46,9 @@ define([
                     newPluginsObject.push(plugin);
             });
             return newPluginsObject;
+        },
+        _stacked100Plugin: function(options) {
+            return ChartStacked100.default;
         },
         _gaugeNeedlePlugin: function(options) {
             return {

@@ -4,37 +4,6 @@ namespace BroCode\Chartee\Model\DataBuilder;
 
 class DoughnutChartDataBuilder extends AbstractChartDataBuilder
 {
-    /**
-     * @var string
-     */
-    protected $dataSetLabel = '';
-
-    /**
-     * @var array
-     */
-    protected $dataValues = [];
-
-    public function setDataValues($dataValues = [])
-    {
-        $this->dataValues = $dataValues;
-        return $this;
-    }
-
-    protected function getDataValues()
-    {
-        return $this->dataValues;
-    }
-
-    public function setDataSetLabel($dataSetLabel)
-    {
-        $this->dataSetLabel = $dataSetLabel;
-        return $this;
-    }
-
-    protected function getDataSetLabel()
-    {
-        return $this->dataSetLabel;
-    }
 
 
     protected function construct()
@@ -42,11 +11,33 @@ class DoughnutChartDataBuilder extends AbstractChartDataBuilder
         parent::construct();
 
         $this->setType('doughnut')
-            ->addPlugin("doughnutLablesLine");
+            ->addPlugin("doughnutLablesLine")
+            ->addOption("layout", [
+                "padding" => [
+                    "top" => 20,
+                    "bottom" => 20,
+                    "left" => 50,
+                    "right" => 50
+                ]
+            ])->addOption("plugins" , [
+                "legend" => [
+                    "display" => false
+                ]
+            ]);
+    }
+
+    public function addDefaultDataSetValues($dataSet)
+    {
+        return parent::addDefaultDataSetValues($dataSet)
+            ->setBorderWidth(1)
+            ->setCutout("90%")
+            ->setBorderRadius(20)
+            ->setOffset(10);
     }
 
     protected function mergeConfigurations()
     {
+        return parent::mergeConfigurations();
         // default sample from https://www.chartjs3.com/docs/chart/getting-started/
         return [
             "type" => $this->getType(),
@@ -79,21 +70,7 @@ class DoughnutChartDataBuilder extends AbstractChartDataBuilder
                     "offset" => 10
                 ]]
             ],
-            "options" => [
-                "layout" => [
-                    "padding" => [
-                        "top" => 20,
-                        "bottom" => 20,
-                        "left" => 50,
-                        "right" => 50
-                    ]
-                ],
-                "plugins" => [
-                    "legend" => [
-                        "display" => false
-                    ]
-                ]
-            ],
+            "options" => $this->getPlugins(),
             "plugins" => $this->getPlugins()
         ];
     }

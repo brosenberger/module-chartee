@@ -6,18 +6,6 @@ use BroCode\Chartee\Model\DataBuilder\PolarChartDataBuilder;
 
 class DemoPolarChartDataBuilder extends PolarChartDataBuilder
 {
-
-    protected function mergeConfigurations()
-    {
-        return [
-            "type" => $this->getType(),
-            "data" => [
-                "labels"=> $this->getDataLabels(),
-                "datasets"=> $this->getDataSets()
-            ]
-        ];
-    }
-
     public function build()
     {
         $this->setDataLabels(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
