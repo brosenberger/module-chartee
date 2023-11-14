@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="BroCode\Chartee\Api\DownloadLinkTemplateInterface" type="BroCode\Chartee\Block\Adminhtml\CsvDownloadLink"/>
+
+    <type name="\BroCode\Chartee\Model\ChartDataService">
+        <arguments>
+            <argument name="chartDataBuilders" xsi:type="array">
+                <item name="brocode-customer-stacked-group" xsi:type="object">\BroCode\Chartee\Model\DataBuilder\Customer\StackedCustomerGroupDataBuilder</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

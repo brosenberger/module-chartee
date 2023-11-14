@@ -4,6 +4,7 @@
   "description": "Module to generate Graphs and Charts with chart.js",
   "type": "magento2-module",
   "require": {
+    "league/csv": "^9.8",
     "magento/framework": "*"
   },
   "license": [

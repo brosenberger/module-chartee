@@ -1,0 +1,8 @@
+<?php
+    /** @var \BroCode\Chartee\Api\DownloadLinkTemplateInterface $block */
+if ($block->hasDownloadData()): ?>
+<a href="data:<?= $block->getDownloadFileType() ?>;<?= $block->getDownloadData() ?>"
+   download="<?= $block->getDownloadFilename() ?>">
+    <?= __('Download Chart Data') ?>
+</a>
+<?php endif; ?>

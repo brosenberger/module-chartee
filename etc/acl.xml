@@ -5,6 +5,8 @@
             <resource id="Magento_Backend::admin">
                 <resource id="BroCode_Chartee::chartee" title="BroCode Chartee" sortOrder="100">
                 </resource>
+                <resource id="BroCode_Chartee::configuration" title="BroCode Chartee Configurations" sortOrder="100">
+                </resource>
             </resource>
         </resources>
     </acl>

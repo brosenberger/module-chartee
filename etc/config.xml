@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <brocode_chartee_reports>
+            <customer>
+                <customer_group_distribution>0</customer_group_distribution>
+                <customer_group_distribution_downloadfile>{date}_customer_groups_distribution.csv</customer_group_distribution_downloadfile>
+            </customer>
+        </brocode_chartee_reports>
+    </default>
+</config>

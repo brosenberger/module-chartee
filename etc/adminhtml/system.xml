@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="brocode_chartee_reports" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="999" translate="label">
+            <label>Chartee Reports Configuration</label>
+            <tab>service</tab>
+            <resource>BroCode_Chartee::configuration</resource>
+
+            <group id="customer" translate="label" type="text" sortOrder="10" showInDefault="1" canRestore="1">
+                <label>Customer Report Settings</label>
+
+                <field id="customer_group_distribution" translate="label" type="select" sortOrder="20" showInDefault="1" canRestore="1">
+                    <label>Show Customer Group Distribution Chart</label>
+                    <comment>Placed in: Customers -> Customer Groups Listing</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="customer_group_distribution_downloadfile" translate="label comment" type="text" sortOrder="22" showInDefault="1" canRestore="1">
+                    <label>Custome Group Distribution Filename</label>
+                    <comment>Placeholder {date} can be used</comment>
+                    <depends>
+                        <field id="customer_group_distribution">1</field>
+                    </depends>
+                </field>
+            </group>
+
+        </section>
+    </system>
+</config>
