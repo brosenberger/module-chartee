@@ -55,6 +55,20 @@ abstract class AbstractChartDataBuilder extends DataObject implements ChartDataB
         return $data;
     }
 
+    protected function addAutocoloring($mode = 'data', $enabled = true) {
+        if ($enabled) {
+            $this->addPlugin('autocolors')
+                ->addOption('plugins', [
+                    'autocolors' => ['mode' => $mode]
+                ]);
+        } else {
+            $this->addOption('plugins', [
+                'autocolors' => ['enabled' => false]
+            ]);
+        }
+        return $this;
+    }
+
     /**
      * @return array
      */

@@ -4,12 +4,14 @@ define([
     "jquery",
     'graph-chartjs',
     'graph-chartjs-boxplot',
-    'graph-chartjs-stacked100'
+    'graph-chartjs-stacked100',
+    'graph-chartjs-autocolors'
 ], function(
     $,
     Chart4,
     ChartBoxplot,
-    ChartStacked100
+    ChartStacked100,
+    ChartAutocolors
 ) {
     "use strict";
 
@@ -46,6 +48,9 @@ define([
                     newPluginsObject.push(plugin);
             });
             return newPluginsObject;
+        },
+        _autocolorsPlugin: function(options) {
+          return ChartAutocolors;
         },
         _stacked100Plugin: function(options) {
             return ChartStacked100.default;
