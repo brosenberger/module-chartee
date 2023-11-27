@@ -4,8 +4,12 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="BroCode_Chartee::chartee" title="BroCode Chartee" sortOrder="100">
-                </resource>
-                <resource id="BroCode_Chartee::configuration" title="BroCode Chartee Configurations" sortOrder="100">
+                    <resource id="BroCode_Chartee::configuration" title="BroCode Chartee Configurations" sortOrder="100">
+                    </resource>
+                    <resource id="BroCode_Chartee::charts_visibility" title="BroCode Chartee Visibility" sortOrder="200">
+                        <resource id="BroCode_Chartee::chart_customer_group_distribution" title="BroCode Customer Group Distribution" sortOrder="100">
+                        </resource>
+                    </resource>
                 </resource>
             </resource>
         </resources>
