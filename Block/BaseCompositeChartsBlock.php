@@ -10,6 +10,7 @@ use Magento\Framework\View\Element\Template\Context;
 class BaseCompositeChartsBlock extends Template
 {
     const DEFAULT_CHARTBUILDER_NAME = 'chartDataBuilder';
+    const CHART_DOWNLOADDATA = 'downloadDataKey';
     const VISIBILITY_CONFIG_PATH = 'visibilityConfigPath';
     const DOWNLOADNAME_CONFIG_PATH = 'downloadNameConfigPath';
 
@@ -64,6 +65,10 @@ class BaseCompositeChartsBlock extends Template
     }
 
     protected function getDownloadData() {
+        if ($this->getData(self::CHART_DOWNLOADDATA) !== null) {
+            return $this->getChartData($this->getData(self::CHART_DOWNLOADDATA));
+        }
+
         return [];
     }
 
