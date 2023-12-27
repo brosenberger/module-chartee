@@ -7,6 +7,7 @@ use BroCode\Chartee\Api\DownloadLinkTemplateInterface;
 
 use League\Csv\Writer;
 use Magento\Backend\Block\Template;
+use Magento\Framework\DataObject;
 
 class CsvDownloadLink extends Template implements DownloadLinkTemplateInterface
 {
@@ -55,6 +56,14 @@ class CsvDownloadLink extends Template implements DownloadLinkTemplateInterface
 
     public function setDownloadData($data)
     {
+        if (is_array($data) && !empty($data)) {
+            $data = array_map(function ($item) {
+                if ($item instanceof DataObject) {
+                    return $item->getData();
+                }
+                return $item;
+            }, $data);
+        }
         $this->data = $data;
         return $this;
     }
