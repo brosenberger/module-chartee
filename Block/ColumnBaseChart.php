@@ -1,6 +1,6 @@
 <?php
 
-namespace BroCode\Chartee\Block\Adminhtml;
+namespace BroCode\Chartee\Block;
 
 use Magento\Backend\Block\Template;
 

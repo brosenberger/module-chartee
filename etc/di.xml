@@ -4,6 +4,7 @@
 
     <!--<preference for="BroCode\Chartee\Api\ChartDataViewModelInterface" type="BroCode\Chartee\Block\ViewModel\ChartDataViewModel"/>-->
     <preference for="BroCode\Chartee\Api\Data\ChartDataConfigurationInterface" type="BroCode\Chartee\Model\Data\ChartDataConfiguration"/>
+    <preference for="BroCode\Chartee\Api\DownloadLinkTemplateInterface" type="BroCode\Chartee\Block\CsvDownloadLink"/>
 
     <virtualType name="BroCode\Chartee\Block\ViewModel\DemoBoxplotChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
         <arguments>

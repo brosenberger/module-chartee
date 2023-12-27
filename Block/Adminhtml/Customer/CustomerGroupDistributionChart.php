@@ -15,6 +15,7 @@ class CustomerGroupDistributionChart extends BaseCompositeChartsBlock
         $this->setData(self::DEFAULT_CHARTBUILDER_NAME, 'brocode-customer-stacked-group');
         $this->setData(self::VISIBILITY_CONFIG_PATH, Constants::CONFIG_CUSTOMER_GROUPDISTRIBUTIONCHART);
         $this->setData(self::DOWNLOADNAME_CONFIG_PATH, Constants::CONFIG_CUSTOMER_GROUPDISTRIBUTIONCHART_DOWNLOADFILE);
+        $this->setData(self::PERMISSION, Constants::PERMISSION_CUSTOMER_GROUPDISTRIBUTION);
     }
 
     protected function getDownloadData()

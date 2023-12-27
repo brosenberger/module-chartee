@@ -4,85 +4,38 @@ namespace BroCode\Chartee\Block\Adminhtml;
 
 use BroCode\Chartee\Api\DownloadLinkTemplateInterface;
 use BroCode\Chartee\Api\DownloadLinkTemplateInterfaceFactory;
-use Magento\Backend\Block\Template;
-use Magento\Backend\Block\Template\Context;
 use Magento\Directory\Helper\Data as DirectoryHelper;
+use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
+use Magento\Framework\View\Element\Template;
 
-class BaseCompositeChartsBlock extends Template
+class BaseCompositeChartsBlock extends \BroCode\Chartee\Block\BaseCompositeChartsBlock
 {
-    const DEFAULT_CHARTBUILDER_NAME = 'chartDataBuilder';
-    const VISIBILITY_CONFIG_PATH = 'visibilityConfigPath';
-    const DOWNLOADNAME_CONFIG_PATH = 'downloadNameConfigPath';
+    const PERMISSION = 'permission';
 
-    protected $chartBlock = [];
     /**
-     * @var DownloadLinkTemplateInterfaceFactory
+     * @var AuthorizationInterface
      */
-    protected $downloadLinkTemplateFactory;
+    protected $authorization;
 
     /**
      * @param DownloadLinkTemplateInterfaceFactory $downloadLinkTemplateFactory
      * @param array $data
-     * @param JsonHelper|null $jsonHelper
-     * @param DirectoryHelper|null $directoryHelper
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
+        AuthorizationInterface $authorization,
+        \Magento\Framework\View\Element\Template\Context $context,
         \BroCode\Chartee\Api\DownloadLinkTemplateInterfaceFactory $downloadLinkTemplateFactory,
-        array $data = [],
-        ?JsonHelper $jsonHelper = null,
-        ?DirectoryHelper $directoryHelper = null
+        array $data = []
     ) {
-        parent::__construct($context, $data, $jsonHelper, $directoryHelper);
-        $this->downloadLinkTemplateFactory = $downloadLinkTemplateFactory;
-    }
-
-    public function getChartBlock($dataChartBuilderName = self::DEFAULT_CHARTBUILDER_NAME)
-    {
-        if (!isset($this->chartBlock[$dataChartBuilderName])) {
-            $this->chartBlock[$dataChartBuilderName] = $this->getLayout()->createBlock(\BroCode\Chartee\Block\Widget\BaseChart::class,
-                $this->getData($dataChartBuilderName).'_chart',
-                ['data'=>['chartDataBuilder' => $this->getData($dataChartBuilderName)]]
-            );
-        }
-        return $this->chartBlock[$dataChartBuilderName];
-    }
-
-    public function getChartData($dataElement = null, $dataChartBuilderName = self::DEFAULT_CHARTBUILDER_NAME)
-    {
-        $data = $this->getChartBlock($dataChartBuilderName)->getChartData()->getData();
-        if ($dataElement!== null && $data !== null && isset($data[$dataElement])) {
-            return $data[$dataElement];
-        }
-
-        return $data;
-    }
-
-    public function getDownloadDataLink()
-    {
-        /** @var DownloadLinkTemplateInterface $linkData */
-        $linkData = $this->downloadLinkTemplateFactory->create();
-        return $linkData->setDownloadFilenameConfigPath($this->getData(self::DOWNLOADNAME_CONFIG_PATH))
-            ->setDownloadData($this->getDownloadData())
-            ->toHtml();
-    }
-
-    protected function getDownloadData() {
-        return [];
-    }
-
-    public function getCacheKeyInfo()
-    {
-        $cacheKey = parent::getCacheKeyInfo();
-        $cacheKey[] = $this->getData(self::DEFAULT_CHARTBUILDER_NAME);
-        return $cacheKey;
+        parent::__construct($context, $downloadLinkTemplateFactory, $data);
+        $this->authorization = $authorization;
     }
 
     public function toHtml()
     {
-        if ($this->getData(self::VISIBILITY_CONFIG_PATH)
-            && !$this->_scopeConfig->getValue($this->getData(self::VISIBILITY_CONFIG_PATH))) {
+        if ($this->getData(self::PERMISSION)
+            && !$this->authorization->isAllowed($this->getData(self::PERMISSION))) {
             return '';
         }
         return parent::toHtml();
