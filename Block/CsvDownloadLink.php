@@ -31,7 +31,9 @@ class CsvDownloadLink extends Template implements DownloadLinkTemplateInterface
 
     public function setDownloadFilenameConfigPath($filenameConfig)
     {
-        $filename = $this->_scopeConfig->getValue($filenameConfig);
+        if ($filenameConfig === null || ($filename = $this->_scopeConfig->getValue($filenameConfig)) === null) {
+            $filename = "{date}_" . md5(rand(0, 1000)) . ".csv";
+        }
         $this->filename = str_replace('{date}', date('Y-m-d'), $filename);
         return $this;
     }
