@@ -4,8 +4,6 @@ namespace BroCode\Chartee\Block;
 
 use BroCode\Chartee\Api\DownloadLinkTemplateInterface;
 use BroCode\Chartee\Api\DownloadLinkTemplateInterfaceFactory;
-use Magento\Directory\Helper\Data as DirectoryHelper;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 

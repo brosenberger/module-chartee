@@ -2,12 +2,8 @@
 
 namespace BroCode\Chartee\Block\Adminhtml;
 
-use BroCode\Chartee\Api\DownloadLinkTemplateInterface;
 use BroCode\Chartee\Api\DownloadLinkTemplateInterfaceFactory;
-use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\AuthorizationInterface;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
-use Magento\Framework\View\Element\Template;
 
 class BaseCompositeChartsBlock extends \BroCode\Chartee\Block\BaseCompositeChartsBlock
 {
