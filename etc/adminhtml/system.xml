@@ -15,7 +15,7 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="customer_group_distribution_downloadfile" translate="label comment" type="text" sortOrder="22" showInDefault="1" canRestore="1">
-                    <label>Custome Group Distribution Filename</label>
+                    <label>Customer Group Distribution Filename</label>
                     <comment>Placeholder {date} can be used</comment>
                     <depends>
                         <field id="customer_group_distribution">1</field>
