@@ -28,7 +28,7 @@ class BaseCompositeChartsBlock extends Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \BroCode\Chartee\Api\DownloadLinkTemplateInterfaceFactory $downloadLinkTemplateFactory,
-        array $data = [],
+        array $data = []
     ) {
         parent::__construct($context, $data);
         $this->downloadLinkTemplateFactory = $downloadLinkTemplateFactory;
