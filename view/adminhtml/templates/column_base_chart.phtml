@@ -1,13 +1,13 @@
 <?php
-/** @var \BroCode\Chartee\Block\Adminhtml\ColumnBaseChart $block */
+/** @var \BroCode\Chartee\Block\ColumnBaseChart $block */
 ?>
 <div class="dashboard-item">
     <?php if (!empty($block->getSectionTitle())) : ?>
     <div class="dashboard-item-title"><?= __($block->getSectionTitle()) ?></div>
     <?php endif; ?>
     <div class="dashboard-item-content" style="width: 100%;max-width: 100%;">
-        <div class="chartee" style="display: grid; grid-template-columns: repeat(<?= count($block->getChildNames())?>, 1fr);">
-            <?= $block->getChildHtml() ?>
+        <div class="chartee" style="display: grid; grid-template-columns: repeat(<?= $block->getChildCount() ?>, 1fr);">
+            <?= $block->getContentHtml() ?>
         </div>
     </div>
 </div>
