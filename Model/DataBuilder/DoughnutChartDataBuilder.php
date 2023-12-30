@@ -11,7 +11,7 @@ class DoughnutChartDataBuilder extends AbstractChartDataBuilder
         parent::construct();
 
         $this->setType('doughnut')
-            ->addPlugin("doughnutLablesLine")
+            ->addPlugin("doughnutLabelsLine")
             ->addOption("layout", [
                 "padding" => [
                     "top" => 20,

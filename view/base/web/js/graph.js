@@ -103,9 +103,9 @@ define([
                 }
             }
         },
-        _doughnutLablesLinePlugin: function(options) {
+        _doughnutLabelsLinePlugin: function(options) {
             return {
-                id: 'doughnutLablesLine',
+                id: 'doughnutLabelsLine',
                 afterDraw(chart, args, options) {
                     const {ctx, chartArea: { top, bottom, left, right, width, height}} = chart;
 
