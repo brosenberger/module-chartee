@@ -2,7 +2,28 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="BroCode\Chartee\Block\Adminhtml\Customer\CustomerGroupDistributionChart" name="brocode.customer.customergroup.distribution.chart" before="-"/>
+            <block name="brocode.customer.customergroup.distribution.chart" template="BroCode_Chartee::customer/customer_group_distribution.phtml" class="BroCode\Chartee\Block\Adminhtml\BaseCompositeChartsBlock" before="-">
+                <action method="setData">
+                    <argument name="name" xsi:type="string">visibilityConfigPath</argument>
+                    <argument name="value" xsi:type="string">brocode_chartee_reports/customer/customer_group_distribution</argument>
+                </action>
+                <action method="setData">
+                    <argument name="name" xsi:type="string">permission</argument>
+                    <argument name="value" xsi:type="string">BroCode_Chartee::chart_customer_group_distribution</argument>
+                </action>
+                <action method="setData">
+                    <argument name="name" xsi:type="string">chartDataBuilder</argument>
+                    <argument name="value" xsi:type="string">brocode-customer-stacked-group</argument>
+                </action>
+                <action method="setData">
+                    <argument name="name" xsi:type="string">downloadNameConfigPath</argument>
+                    <argument name="value" xsi:type="string">brocode_chartee_reports/customer/customer_group_distribution_downloadfile</argument>
+                </action>
+                <action method="setData">
+                    <argument name="name" xsi:type="string">downloadDataKey</argument>
+                    <argument name="value" xsi:type="string">customer_groups_data</argument>
+                </action>
+            </block>
         </referenceContainer>
     </body>
 </page>

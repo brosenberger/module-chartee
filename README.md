@@ -116,7 +116,7 @@ Base chart display class. It can be used within the frontend and adminhtml (a sp
 * checks the visibility based on a ACL permission (only the adminhtml-class)
 
 ````xml
-<block name="brocode.customer.customergroup.distribution.chart" template="BroCode::customer/customer_group_distribution.phtml" class="BroCode\Chartee\Block\Adminhtml\BaseCompositeChartsBlock">
+<block name="brocode.customer.customergroup.distribution.chart" template="BroCode_Chartee::customer/customer_group_distribution.phtml" class="BroCode\Chartee\Block\Adminhtml\BaseCompositeChartsBlock">
     <action method="setData">
         <argument name="name" xsi:type="string">visibilityConfigPath</argument>
         <argument name="value" xsi:type="string">brocode_chartee_reports/customer/customer_group_distribution</argument>
