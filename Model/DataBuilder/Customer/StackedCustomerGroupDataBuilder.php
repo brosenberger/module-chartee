@@ -6,6 +6,7 @@ use BroCode\Chartee\Api\Data\ChartDataConfigurationInterfaceFactory;
 use BroCode\Chartee\Model\DataBuilder\DataSetBuilderFactory;
 use BroCode\Chartee\Model\DataBuilder\StackedBarChartDataBuilder;
 use Magento\Customer\Model\GroupRegistry;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Reports\Model\ResourceModel\Customer\CollectionFactory;
 
 class StackedCustomerGroupDataBuilder extends StackedBarChartDataBuilder
@@ -36,7 +37,12 @@ class StackedCustomerGroupDataBuilder extends StackedBarChartDataBuilder
 
         $this->setDataLabels([__('Customer Groups')]);
         foreach ($groupData as &$group) {
-            $group['group_name'] = $this->groupRegistry->retrieve($group['group_id'])->getCode();
+            try {
+                $groupName = $this->groupRegistry->retrieve($group['group_id'])->getCode();
+            } catch (NoSuchEntityException $e) {
+                $groupName = __('%1 (deleted)', $group['group_id']);
+            }
+            $group['group_name'] = $groupName;
             $this->createDataSet()
                 ->setLabel($group['group_name'])
                 ->setDataValues($group['count'])
