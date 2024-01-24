@@ -44,6 +44,22 @@ class ChartRequestParameterService
         return null;
     }
 
+    public function getStartDate()
+    {
+        if ($this->getRequest()->getParam('startDate')) {
+            return $this->getRequest()->getParam('startDate');
+        }
+        return null;
+    }
+
+    public function getEndDate()
+    {
+        if ($this->getRequest()->getParam('endDate')) {
+            return $this->getRequest()->getParam('endDate');
+        }
+        return null;
+    }
+
     protected function getRequest()
     {
         return $this->request;

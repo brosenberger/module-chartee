@@ -7,6 +7,10 @@ var config = {
             'graph-chartjs-stacked100': 'BroCode_Chartee/js/chartjs-plugin-stacked100-1.5.2',
             'graph-chartjs-autocolors': 'BroCode_Chartee/js/chartjs-plugin-autocolors-0.2.2',
             'graph-chartjs-helpers': 'BroCode_Chartee/js/chartjs-helpers-parts-4.3.2',
+            'date-range-picker-lib': 'BroCode_Chartee/js/daterangepicker-3.1',
         }
+    },
+    shim: {
+        'date-range-picker-lib': ['jquery', 'moment']
     }
 };
