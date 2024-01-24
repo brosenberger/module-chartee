@@ -250,7 +250,7 @@ Steps to add a new chart:
 </block>
 ````
 
-## Chart.js version and extensions
+## JS-Libraries, Chart.js version and extensions
 
 * chart.js v4.4.0
 * chart.js helpers (parts of it) v4.3.2
@@ -260,3 +260,4 @@ Steps to add a new chart:
 * custom implementation (based on samples from the internet, see above for reference) within graph.js
   * doughnut labels line plugin
   * gauge chart
+* JQuery daterangepicker extension https://github.com/dangrossman/daterangepicker 
