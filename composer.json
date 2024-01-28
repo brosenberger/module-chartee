@@ -17,5 +17,11 @@
     "psr-4": {
       "BroCode\\Chartee\\": ""
     }
-  }
+  },
+  "funding": [
+    {
+      "type": "By me a coffee",
+      "url": "https://www.buymeacoffee.com/brosenberger"
+    }
+  ]
 }

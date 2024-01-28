@@ -9,6 +9,8 @@ This module should ease the way of creating powerful charts in Magento 2. It is 
 * Provide boilerplate codes to easily integrate any type of chart in various places within Magento
 * Encourage everyone to create meaningful representations of data already available in Magento2, no stackholder would see otherwise as it is buried in the databases
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/brosenberger)
+
 ## Installation
 
 ```
