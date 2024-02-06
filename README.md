@@ -244,10 +244,13 @@ xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_config
 ````
 Hint for using a date range picker in a custom element:
 ````html
-<input type="text" name="daterange" value="" data-mage-init='{"date-range-picker": {"config":""}}'/>
+<input type="text" name="daterange" value="" data-mage-init='{"date-range-picker": {}}'/>
 ````
-For configuration possibility see https://www.daterangepicker.com/#config (not everything is yet supported for forwarding parameters)
+Hint for configuration possibility (see https://www.daterangepicker.com/#config), e.g. hiding the week numbers: 
 
+````html
+<input type="text" name="daterange" value="" data-mage-init='{"date-range-picker": {"showWeekNumbers":false}}'/>
+````
 
 #### BroCode\Chartee\Block\Widget\BaseChart
 
