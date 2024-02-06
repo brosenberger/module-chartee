@@ -8,6 +8,7 @@ var config = {
             'graph-chartjs-autocolors': 'BroCode_Chartee/js/chartjs-plugin-autocolors-0.2.2',
             'graph-chartjs-helpers': 'BroCode_Chartee/js/chartjs-helpers-parts-4.3.2',
             'date-range-picker-lib': 'BroCode_Chartee/js/daterangepicker-3.1',
+            'date-range-picker': 'BroCode_Chartee/js/daterangepicker-widget'
         }
     },
     shim: {

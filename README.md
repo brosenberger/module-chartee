@@ -203,6 +203,7 @@ the \BroCode\Chartee\Model\ChartRequestParameterService provides methods to gath
 
 Current following parameters are supported:
 * Scope (ChartRequestParameterService::getStoreIds(), based on the backend store switcher Magento\Backend\Block\Store\Switcher)
+* DateRange (ChartRequestParameterService::getStartDate() & ChartRequestParameterService::getEndDate(), null if not set)
 
 Hint for adding a store filter to your backend page:
 ````xml
@@ -226,6 +227,27 @@ Hint for adding a store filter to your backend page:
     </referenceContainer>
 </body>
 ````
+
+
+Hint for adding a date range filter to your backend page:
+````xml
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceContainer name="page.main.actions">
+            <block class="BroCode\Chartee\Block\Filter\DateRangePicker" name="date_range_picker" />
+        </referenceContainer>
+    </body>
+</page>
+````
+Hint for using a date range picker in a custom element:
+````html
+<input type="text" name="daterange" value="" data-mage-init='{"date-range-picker": {"config":""}}'/>
+````
+For configuration possibility see https://www.daterangepicker.com/#config (not everything is yet supported for forwarding parameters)
+
 
 #### BroCode\Chartee\Block\Widget\BaseChart
 
