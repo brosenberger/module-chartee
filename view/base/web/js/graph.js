@@ -5,13 +5,15 @@ define([
     'graph-chartjs',
     'graph-chartjs-boxplot',
     'graph-chartjs-stacked100',
-    'graph-chartjs-autocolors'
+    'graph-chartjs-autocolors',
+    'graph-chartjs-geo'
 ], function(
     $,
     Chart4,
     ChartBoxplot,
     ChartStacked100,
-    ChartAutocolors
+    ChartAutocolors,
+    ChartGeo
 ) {
     "use strict";
 

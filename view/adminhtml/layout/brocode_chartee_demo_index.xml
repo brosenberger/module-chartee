@@ -120,6 +120,24 @@ Stacked BarCharts with the help of the <a href="https://github.com/y-takey/chart
                         </action>
                     </block>
                 </container>
+                <container name="chartee.geo.choropleth.demo" htmlTag="div" htmlClass="chartee-demo-container"   >
+                    <container name="chartee.geo.choropleth.demo.text-container" htmlTag="div">
+                        <block class="Magento\Framework\View\Element\Text" name="chartee.geo.choropleth.demo.text">
+                            <arguments>
+                                <argument name="text" xsi:type="string" translate="true"><![CDATA[
+Geolocation Choropleth, based on the chartjs-chart-geo plugin (<a href="https://www.sgratzl.com/chartjs-chart-geo/" target="_blank">https://www.sgratzl.com/chartjs-chart-geo/</a>), Demo sample from <a href="https://codepen.io/sgratzl/pen/bGVmQKw" target="_blank">Codepen</a>.
+]]></argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <block class="BroCode\Chartee\Block\Widget\BaseChart" name="chartee.geo.choropleth.demo.chart">
+                        <action method="setViewModel">
+                            <argument name="viewModel" xsi:type="object">
+                                BroCode\Chartee\Block\ViewModel\DemoGeoChoroplethChartConfiguration
+                            </argument>
+                        </action>
+                    </block>
+                </container>
             </block>
         </referenceContainer>
     </body>

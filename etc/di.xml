@@ -5,6 +5,15 @@
     <!--<preference for="BroCode\Chartee\Api\ChartDataViewModelInterface" type="BroCode\Chartee\Block\ViewModel\ChartDataViewModel"/>-->
     <preference for="BroCode\Chartee\Api\Data\ChartDataConfigurationInterface" type="BroCode\Chartee\Model\Data\ChartDataConfiguration"/>
     <preference for="BroCode\Chartee\Api\DownloadLinkTemplateInterface" type="BroCode\Chartee\Block\CsvDownloadLink"/>
+    <preference for="BroCode\Chartee\Api\GeoCodeJsonServiceInterface" type="BroCode\Chartee\Model\Data\GeoCode\CompositeGeoCodeJsonService"/>
+
+    <type name="BroCode\Chartee\Model\Data\GeoCode\CompositeGeoCodeJsonService">
+        <arguments>
+            <argument name="geoCodeJsonServices" xsi:type="array">
+                <item name="countries-50m" xsi:type="object">BroCode\Chartee\Model\Data\GeoCode\GeoCodeCountries50mService</item>
+            </argument>
+        </arguments>
+    </type>
 
     <virtualType name="BroCode\Chartee\Block\ViewModel\DemoBoxplotChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
         <arguments>
@@ -34,6 +43,11 @@
     <virtualType name="BroCode\Chartee\Block\ViewModel\DemoStackedChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
         <arguments>
             <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoStackedBarChartDataBuilder</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BroCode\Chartee\Block\ViewModel\DemoGeoChoroplethChartConfiguration" type="BroCode\Chartee\Block\ViewModel\BaseChartDataViewModel">
+        <arguments>
+            <argument name="dataBuilder" xsi:type="object">BroCode\Chartee\Model\DataBuilder\Demo\DemoGeoChoroplethChartDataBuilder</argument>
         </arguments>
     </virtualType>
 </config>
