@@ -288,3 +288,7 @@ Steps to add a new chart:
   * doughnut labels line plugin
   * gauge chart
 * JQuery daterangepicker extension https://github.com/dangrossman/daterangepicker 
+
+---
+
+More Magento modules and write-ups: [brocode.at](https://brocode.at/modules/)
