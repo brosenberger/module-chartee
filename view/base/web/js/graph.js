@@ -122,6 +122,9 @@ define([
                     chart.data.datasets.forEach((dataset, i) => {
                         chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
                             const {x, y} = datapoint.tooltipPosition();
+                            const color = Array.isArray(dataset.borderColor)
+                                ? dataset.borderColor[index]
+                                : (dataset.borderColor || '#444');
 
                             // draw line
                             const halfHeight = height / 2;
@@ -137,7 +140,7 @@ define([
                             ctx.moveTo(x, y);
                             ctx.lineTo(xLine, yLine);
                             ctx.lineTo(xLine + extraLine, yLine);
-                            ctx.strokeStyle = dataset.borderColor[index];
+                            ctx.strokeStyle = color;
                             ctx.stroke();
 
                             // draw label
@@ -150,7 +153,7 @@ define([
 
                             ctx.textAlign = textXPosition;
                             ctx.textBaseline = 'middle';
-                            ctx.fillStyle = dataset.borderColor[index];
+                            ctx.fillStyle = color;
                             ctx.fillText(chart.data.labels[index], xLine + extraLine + plusFivePx, yLine);
                         });
                     });

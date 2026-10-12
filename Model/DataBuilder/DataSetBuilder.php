@@ -65,18 +65,24 @@ class DataSetBuilder extends DataObject
         return $this->builder->addDataSet($this->toArray());
     }
 
-    protected function _underscore($name)
+    /**
+     * Magic accessors keep the camelCase chart.js property names (setBorderColor() -> borderColor) instead of
+     * Magento's snake_case. Handled here instead of overriding _underscore(), whose input differs between
+     * Magento versions and whose cache is shared with every other DataObject.
+     */
+    public function __call($method, $args)
     {
-        if (isset(self::$_underscoreCache[$name])) {
-            return self::$_underscoreCache[$name];
+        $key = lcfirst(substr($method, 3));
+        switch (substr($method, 0, 3)) {
+            case 'get':
+                return $this->getData($key);
+            case 'set':
+                return $this->setData($key, $args[0] ?? null);
+            case 'uns':
+                return $this->unsetData($key);
+            case 'has':
+                return isset($this->_data[$key]);
         }
-        /*
-         *  CHANGE: adaption to avoid snake-casing of properties as this would generate wrong variables for
-         *          the chart.js settings. Example: $this->setBorderColor() -> borderColor instead of originally border_color
-         */
-        // Original Line: strtolower(trim(preg_replace('/([A-Z]|[0-9]+)/', "_$1", $name), '_'));
-        $result = lcfirst($name);
-        self::$_underscoreCache[$name] = $result;
-        return $result;
+        return parent::__call($method, $args);
     }
 }

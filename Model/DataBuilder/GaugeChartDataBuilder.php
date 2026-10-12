@@ -112,7 +112,7 @@ class GaugeChartDataBuilder extends AbstractChartDataBuilder
     public function addDefaultDataSetValues($dataSet)
     {
         return parent::addDefaultDataSetValues($dataSet)
-            ->setBoderColor('white')
+            ->setBorderColor('white')
             ->setBorderWidth(2)
             ->setBorderRadius(5)
             ->setCutout('95%')
