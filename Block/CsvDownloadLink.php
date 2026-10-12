@@ -41,7 +41,8 @@ class CsvDownloadLink extends Template implements DownloadLinkTemplateInterface
 
     public function getDownloadData()
     {
-        $writer = Writer::createFromString();
+        // createFromString() is deprecated since league/csv 9.27, fromString() does not exist before
+        $writer = method_exists(Writer::class, 'fromString') ? Writer::fromString() : Writer::createFromString();
         $first = array_slice($this->data, 0, 1);
         $first = array_shift($first);
         $writer->insertOne(array_keys($first));
