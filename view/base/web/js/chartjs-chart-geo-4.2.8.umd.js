@@ -7,7 +7,10 @@
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('graph-chartjs'), require('graph-chartjs-helpers')) :
-        typeof define === 'function' && define.amd ? define(['exports', 'graph-chartjs','graph-chartjs-helpers'], factory) :
+        typeof define === 'function' && define.amd ? define(['exports', 'graph-chartjs'], function (exports, chart) {
+            // needs more helpers (clipArea, unclipArea, valueOrDefault) than graph-chartjs-helpers provides
+            factory(exports, chart, chart.helpers);
+        }) :
             (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ChartGeo = {}, global.Chart, global.Chart.helpers));
 })(this, (function (exports, chart_js, helpers) { 'use strict';
 

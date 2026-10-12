@@ -17,15 +17,20 @@ define([
 ) {
     "use strict";
 
+    // unlike the other chart plugins, chartjs-chart-geo does not register itself
+    Chart4.register(ChartGeo.ChoroplethController, ChartGeo.GeoFeature, ChartGeo.ColorScale, ChartGeo.ProjectionScale);
+
     $.widget('custom.graph', {
         options: {
             type: "line",
             data: {},
             options: {},
-            plugins: []
+            plugins: [],
+            topojson: null
         },
 
         _create: function() {
+            this._resolveGeoFeatures();
             this.chart = new Chart4(this.element, {
                 "type": this.options.type,
                 "data": this.options.data,
@@ -37,6 +42,35 @@ define([
                 console.log("You click on element: " + e.target);
             });
 
+        },
+        /**
+         * Replaces the country references (`feature`: name or id) of geo datasets by the GeoJSON features of the
+         * configured topology ({topology: {...}, object: 'countries'}); unknown references are dropped and the labels
+         * are taken from the feature names of the first dataset.
+         */
+        _resolveGeoFeatures: function() {
+            var geo = this.options.topojson;
+            if (!geo) {
+                return;
+            }
+            var features = {};
+            ChartGeo.topojson.feature(geo.topology, geo.topology.objects[geo.object]).features.forEach(function(feature) {
+                features[feature.properties.name] = feature;
+                if (feature.id !== undefined) {
+                    features[feature.id] = feature;
+                }
+            });
+            this.options.data.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.filter(function(item) {
+                    item.feature = features[item.feature];
+                    return item.feature !== undefined;
+                });
+            });
+            if (this.options.data.datasets.length) {
+                this.options.data.labels = this.options.data.datasets[0].data.map(function(item) {
+                    return item.feature.properties.name;
+                });
+            }
         },
         /**
          * Show only datasets whose property `key` is contained in `values`; null shows all.

@@ -55,6 +55,20 @@ A variation of the doughnut chart, based on https://www.youtube.com/watch?v=VF6j
 A boxplot chart, based on https://www.youtube.com/watch?v=2zEbeX0bPS8
 ![Boxplot chart](/docs/demo_boxplotchart.png)
 
+**Geo choropleth chart**
+
+A world map coloured by a value per country, based on the chart.js plugin https://github.com/sgratzl/chartjs-chart-geo/ and the sample from https://codepen.io/sgratzl/pen/bGVmQKw
+
+Extend `\BroCode\Chartee\Model\DataBuilder\GeoChoroplethChartDataBuilder`, set the topology and add one data entry per country, referencing the country by its name or its numeric ISO 3166 id. The browser resolves the references against the topology; entries without a matching country are dropped. The bundled `countries-50m` topology is registered in `\BroCode\Chartee\Model\Data\GeoCode\CompositeGeoCodeJsonService` (`etc/di.xml`), further topologies can be added there.
+````php
+$this->setTopology('countries-50m', 'countries')
+    ->createDataSet()
+        ->setLabel(__('Orders'))
+        ->setDataValues(['feature' => 'Austria', 'value' => 42], ['feature' => '276', 'value' => 17])
+        ->build();
+````
+![Geo choropleth chart](/docs/demo_geochoroplethchart.png)
+
 ### Ready to use charts
 
 **Customer Group Distribution**
@@ -299,6 +313,7 @@ Steps to add a new chart:
 * chart.js v4.4.0
 * chart.js helpers (parts of it) v4.3.2
 * chart.js boxplot plugin v4.2.4
+* chart.js geo plugin v4.2.8 (AMD wrapper adapted to use the helpers of the bundled chart.js)
 * chart.js stacked100 plugin v1.5.2
 * chart.js autocolors plugin 0.2.2
 * custom implementation (based on samples from the internet, see above for reference) within graph.js

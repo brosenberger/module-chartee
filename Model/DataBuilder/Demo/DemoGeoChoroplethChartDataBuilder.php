@@ -10,25 +10,18 @@ class DemoGeoChoroplethChartDataBuilder extends GeoChoroplethChartDataBuilder
     {
         $this->addOption('showOutline', true)
             ->addOption('showGraticule', true)
-            ->addOption('fill', false)
-            ->addOption('plugin', ['legend' => ['display' => false]])
-            ->addOption('scales', ['projection' => ['axis' => 'x', 'projection' => 'equalEarth']]);
+            ->addOption('plugins', ['legend' => ['display' => false]])
+            ->addOption('scales', ['projection' => ['axis' => 'x', 'projection' => 'equalEarth']])
+            ->setTopology('countries-50m', 'countries');
 
-        $jsonData = $this->geoCodeJsonService->getGeoCodeJson('countries-50m');
+        $countries = $this->topojson['topology']['objects']['countries']['geometries'];
 
-        $countries = $jsonData['objects']['countries']['geometries'];
-
-        // TODO implement correct feature method
-        // $this->geoCodeJsonService->feature($jsonData, $jsonData['objects']['countries']);
-
-        $countryNames = array_map(function ($country) { return $country['properties']['name'];}, $countries);
-        $this->setDataLabels($countryNames)
-        ->createDataSet()
+        $this->createDataSet()
             ->setLabel(__('Countries'))
-            ->setFill(false)
-            ->setData(array_map(function ($country) {
-                return ['feature' => $country, 'value' => rand(0, 100)] ;
-            }, $countries))->build();
+            ->setDataValues(...array_map(function ($country) {
+                return ['feature' => $country['properties']['name'], 'value' => rand(0, 100)];
+            }, $countries))
+            ->build();
 
         return parent::build();
     }
