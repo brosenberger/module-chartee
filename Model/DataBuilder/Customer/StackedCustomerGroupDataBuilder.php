@@ -46,6 +46,7 @@ class StackedCustomerGroupDataBuilder extends StackedBarChartDataBuilder
             $this->createDataSet()
                 ->setLabel($group['group_name'])
                 ->setDataValues($group['count'])
+                ->setData('groupId', (int)$group['group_id'])
                 ->build();
         }
 

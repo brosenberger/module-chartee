@@ -61,6 +61,8 @@ A boxplot chart, based on https://www.youtube.com/watch?v=2zEbeX0bPS8
 
 The charts shows the distribution of registered customers between all customer groups. It also provides the possibility to download the shown data as CSV. 
 
+The chart follows the customer group grid below it: filtering, searching or paging the grid restricts the chart to the customer groups currently listed, and the percentages are recalculated for those groups. The CSV download always contains all customer groups.
+
 It can be found in the page  ```Customers -> Customer Groups```:
 ![Customer Group Distribution](/docs/customergroup_distribution_chart.png)
 
@@ -68,7 +70,7 @@ It can be found in the page  ```Customers -> Customer Groups```:
 ![Customer Group Distribution Permissions](/docs/acl_configuration.png)
 
 *Configuration:*  ```Stores -> Configuration -> Services -> Chartee Reports Configuration -> Customer Report Settings```
-* the chart can be disabled via configuration 
+* the chart is disabled by default and can be enabled via configuration 
 * the download filename can be changed via configuration
 ![Customer Group Distribution Configuration](/docs/customer_chart_configuration.png)
 
@@ -251,6 +253,21 @@ Hint for configuration possibility (see https://www.daterangepicker.com/#config)
 ````html
 <input type="text" name="daterange" value="" data-mage-init='{"date-range-picker": {"showWeekNumbers":false}}'/>
 ````
+
+**Filtering datasets on the client**
+
+The `graph` widget offers `filterDataSets(key, values)`, which shows only the datasets whose property `key` is contained in `values` (`null` shows all) and redraws the chart. Any extra property set on a dataset in the databuilder can be used as key, e.g.:
+````php
+$this->createDataSet()
+    ->setLabel($group['group_name'])
+    ->setDataValues($group['count'])
+    ->setData('groupId', (int)$group['group_id'])
+    ->build();
+````
+````js
+$('canvas').graph('filterDataSets', 'groupId', ['1', '3']);
+````
+The customer group distribution chart uses this in `BroCode_Chartee/js/customer-group-chart-filter`, which listens to the data of the customer group grid provider (`customer_group_listing.customer_group_listing_data_source`).
 
 #### BroCode\Chartee\Block\Widget\BaseChart
 

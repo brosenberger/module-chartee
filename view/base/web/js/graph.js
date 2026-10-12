@@ -26,9 +26,7 @@ define([
         },
 
         _create: function() {
-            self = this;
-
-            var chart = new Chart4(this.element, {
+            this.chart = new Chart4(this.element, {
                 "type": this.options.type,
                 "data": this.options.data,
                 "options": this.options.options,
@@ -39,6 +37,16 @@ define([
                 console.log("You click on element: " + e.target);
             });
 
+        },
+        /**
+         * Show only datasets whose property `key` is contained in `values`; null shows all.
+         */
+        filterDataSets: function(key, values) {
+            var chart = this.chart;
+            chart.data.datasets.forEach(function(dataset, index) {
+                chart.setDatasetVisibility(index, values === null || values.indexOf(String(dataset[key])) !== -1);
+            });
+            chart.update();
         },
         preparePluginList: function(plugins, options) {
             var that = this;
