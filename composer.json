@@ -1,6 +1,6 @@
 {
   "name": "brocode/module-chartee",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Module to generate Graphs and Charts with chart.js",
   "type": "magento2-module",
   "require": {
